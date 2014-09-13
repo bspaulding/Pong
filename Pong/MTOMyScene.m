@@ -12,42 +12,93 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        /* Setup your scene here */
-        
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
-        
-        SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-        
-        myLabel.text = @"Hello, World!";
-        myLabel.fontSize = 30;
-        myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                       CGRectGetMidY(self.frame));
-        
-        [self addChild:myLabel];
+        self.backgroundColor = [SKColor colorWithRed:71.0/255.0
+                                               green:104.0/255.0
+                                                blue:33.0/255.0
+                                               alpha:1.0];
+        [self addMidfield:size];
+        [self addPaddle1:size];
+        [self addPaddle2:size];
+        [self addBall:size];
     }
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
+- (void)addMidfield:(CGSize)size {
+    SKSpriteNode *midfield = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
+    midfield.name = @"midfield";
+    midfield.size = CGSizeMake(2, size.height);
+    midfield.position = CGPointMake(size.width/2, size.height/2);
+    midfield.alpha = 0.75;
     
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
+    [self addChild:midfield];
+}
+
+- (void)addPaddle1:(CGSize)size {
+    SKSpriteNode *paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
+    paddle.name = @"paddle1";
+    paddle.size = CGSizeMake(6, size.width/6.0);
+    paddle.position = CGPointMake(10, size.height/2.0);
+    [self addChild:paddle];
+}
+
+- (void)addPaddle2:(CGSize)size {
+    SKSpriteNode *paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
+    paddle.name = @"paddle2";
+    paddle.size = CGSizeMake(6, size.width/6.0);
+    paddle.position = CGPointMake(size.width - 10, size.height/2.0);
+    [self addChild:paddle];
+}
+
+-(void)addBall:(CGSize)size {
+    SKSpriteNode *ball = [SKSpriteNode spriteNodeWithImageNamed:@"ball"];
+    ball.name = @"ball";
+    ball.size = CGSizeMake(12, 12);
+    ball.position = CGPointMake(size.width / 2, size.height / 2);
+    [self addChild:ball];
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.lastTouch = [touches anyObject];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    self.lastTouch = [touches anyObject];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+    if (self.lastUpdateTime == 0) {
+        self.lastUpdateTime = currentTime;
+    }
+    
+    NSTimeInterval timeDelta = currentTime - self.lastUpdateTime;
+    
+    if (self.lastTouch) {
+        [self movePaddleTowardPoint:[self.lastTouch locationInNode:self] byTimeDelta:timeDelta];
+    }
+    
+    [self moveBallByTimeDelta:timeDelta];
+    
+    
+    self.lastUpdateTime = currentTime;
+}
+
+-(void)movePaddleTowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta {
+    CGFloat paddleSpeed = 200; // points per second
+    SKNode *paddle = [self childNodeWithName:@"paddle1"];
+    CGFloat distanceLeft = sqrt(pow(paddle.position.x - point.x, 2) +
+                                pow(paddle.position.y - point.y, 2));
+    if (distanceLeft > 4) {
+        CGFloat distanceToTravel = timeDelta * paddleSpeed;
+        CGFloat angle = atan2(point.y - paddle.position.y,
+                              point.x - paddle.position.x);
+        CGFloat yOffset = distanceToTravel * sin(angle);
+        paddle.position = CGPointMake(paddle.position.x,
+                                    paddle.position.y + yOffset);
+    }
+}
+
+-(void)moveBallByTimeDelta:(NSTimeInterval)timeDelta {
 }
 
 @end

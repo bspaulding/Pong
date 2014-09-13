@@ -17,13 +17,14 @@
 		65CC088F19C3F8AF0026D0C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65CC088D19C3F8AF0026D0C2 /* Main.storyboard */; };
 		65CC089219C3F8AF0026D0C2 /* MTOViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC089119C3F8AF0026D0C2 /* MTOViewController.m */; };
 		65CC089519C3F8AF0026D0C2 /* MTOMyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC089419C3F8AF0026D0C2 /* MTOMyScene.m */; };
-		65CC089719C3F8AF0026D0C2 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC089619C3F8AF0026D0C2 /* Spaceship.png */; };
 		65CC089919C3F8AF0026D0C2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65CC089819C3F8AF0026D0C2 /* Images.xcassets */; };
 		65CC08A019C3F8AF0026D0C2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CC089F19C3F8AF0026D0C2 /* XCTest.framework */; };
 		65CC08A119C3F8AF0026D0C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CC087919C3F8AF0026D0C2 /* Foundation.framework */; };
 		65CC08A219C3F8AF0026D0C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CC087D19C3F8AF0026D0C2 /* UIKit.framework */; };
 		65CC08AA19C3F8AF0026D0C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08A819C3F8AF0026D0C2 /* InfoPlist.strings */; };
 		65CC08AC19C3F8AF0026D0C2 /* PongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC08AB19C3F8AF0026D0C2 /* PongTests.m */; };
+		65CC08BA19C3FBA90026D0C2 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08B819C3FBA90026D0C2 /* ball.png */; };
+		65CC08BB19C3FBA90026D0C2 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08B919C3FBA90026D0C2 /* paddle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +54,14 @@
 		65CC089119C3F8AF0026D0C2 /* MTOViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTOViewController.m; sourceTree = "<group>"; };
 		65CC089319C3F8AF0026D0C2 /* MTOMyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTOMyScene.h; sourceTree = "<group>"; };
 		65CC089419C3F8AF0026D0C2 /* MTOMyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTOMyScene.m; sourceTree = "<group>"; };
-		65CC089619C3F8AF0026D0C2 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
 		65CC089819C3F8AF0026D0C2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65CC089E19C3F8AF0026D0C2 /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65CC089F19C3F8AF0026D0C2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		65CC08A719C3F8AF0026D0C2 /* PongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PongTests-Info.plist"; sourceTree = "<group>"; };
 		65CC08A919C3F8AF0026D0C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65CC08AB19C3F8AF0026D0C2 /* PongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PongTests.m; sourceTree = "<group>"; };
+		65CC08B819C3FBA90026D0C2 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		65CC08B919C3FBA90026D0C2 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,14 +123,10 @@
 		65CC088119C3F8AF0026D0C2 /* Pong */ = {
 			isa = PBXGroup;
 			children = (
-				65CC088A19C3F8AF0026D0C2 /* MTOAppDelegate.h */,
-				65CC088B19C3F8AF0026D0C2 /* MTOAppDelegate.m */,
+				65CC08B719C3FB920026D0C2 /* Sprites */,
+				65CC08B619C3F8FD0026D0C2 /* ViewControllers */,
+				65CC08B519C3F8EB0026D0C2 /* Scenes */,
 				65CC088D19C3F8AF0026D0C2 /* Main.storyboard */,
-				65CC089019C3F8AF0026D0C2 /* MTOViewController.h */,
-				65CC089119C3F8AF0026D0C2 /* MTOViewController.m */,
-				65CC089319C3F8AF0026D0C2 /* MTOMyScene.h */,
-				65CC089419C3F8AF0026D0C2 /* MTOMyScene.m */,
-				65CC089619C3F8AF0026D0C2 /* Spaceship.png */,
 				65CC089819C3F8AF0026D0C2 /* Images.xcassets */,
 				65CC088219C3F8AF0026D0C2 /* Supporting Files */,
 			);
@@ -138,6 +136,8 @@
 		65CC088219C3F8AF0026D0C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65CC088A19C3F8AF0026D0C2 /* MTOAppDelegate.h */,
+				65CC088B19C3F8AF0026D0C2 /* MTOAppDelegate.m */,
 				65CC088319C3F8AF0026D0C2 /* Pong-Info.plist */,
 				65CC088419C3F8AF0026D0C2 /* InfoPlist.strings */,
 				65CC088719C3F8AF0026D0C2 /* main.m */,
@@ -162,6 +162,33 @@
 				65CC08A819C3F8AF0026D0C2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		65CC08B519C3F8EB0026D0C2 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				65CC089319C3F8AF0026D0C2 /* MTOMyScene.h */,
+				65CC089419C3F8AF0026D0C2 /* MTOMyScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		65CC08B619C3F8FD0026D0C2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				65CC089019C3F8AF0026D0C2 /* MTOViewController.h */,
+				65CC089119C3F8AF0026D0C2 /* MTOViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		65CC08B719C3FB920026D0C2 /* Sprites */ = {
+			isa = PBXGroup;
+			children = (
+				65CC08B819C3FBA90026D0C2 /* ball.png */,
+				65CC08B919C3FBA90026D0C2 /* paddle.png */,
+			);
+			name = Sprites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65CC088619C3F8AF0026D0C2 /* InfoPlist.strings in Resources */,
+				65CC08BB19C3FBA90026D0C2 /* paddle.png in Resources */,
 				65CC089919C3F8AF0026D0C2 /* Images.xcassets in Resources */,
-				65CC089719C3F8AF0026D0C2 /* Spaceship.png in Resources */,
+				65CC08BA19C3FBA90026D0C2 /* ball.png in Resources */,
 				65CC088F19C3F8AF0026D0C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
