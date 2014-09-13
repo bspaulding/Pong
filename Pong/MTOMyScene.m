@@ -103,18 +103,19 @@
     CGFloat ballSpeed = 150; // points per second
     SKNode *ball = [self childNodeWithName:@"ball"];
     
-    CGFloat velocityY = self.ballVelocity.y;
-    CGFloat velocityX = self.ballVelocity.x;
-    if (ball.position.y < 0 || ball.position.y > self.size.height) {
-        velocityY = velocityY * -1;
-    }
     if (ball.position.x < 0 || ball.position.x > self.size.width) {
-        velocityX = velocityX * -1;
-    }
-    self.ballVelocity = CGPointMake(velocityX, velocityY);
-    
-    ball.position = CGPointMake(ball.position.x + velocityX * timeDelta * ballSpeed,
+        self.ballVelocity = CGPointMake(0, 0);
+        [ball removeFromParent];
+    } else {
+        CGFloat velocityY = self.ballVelocity.y;
+        CGFloat velocityX = self.ballVelocity.x;
+        if (ball.position.y < 0 || ball.position.y > self.size.height) {
+            velocityY = velocityY * -1;
+        }
+        self.ballVelocity = CGPointMake(velocityX, velocityY);
+        ball.position = CGPointMake(ball.position.x + velocityX * timeDelta * ballSpeed,
                                 ball.position.y + velocityY * timeDelta * ballSpeed);
+    }
 }
 
 @end
