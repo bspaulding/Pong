@@ -55,7 +55,9 @@
     ball.name = @"ball";
     ball.size = CGSizeMake(12, 12);
     ball.position = CGPointMake(size.width / 2, size.height / 2);
+    
     [self addChild:ball];
+    self.ballVelocity = CGPointMake(-1, 1);
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -79,7 +81,6 @@
     
     [self moveBallByTimeDelta:timeDelta];
     
-    
     self.lastUpdateTime = currentTime;
 }
 
@@ -99,6 +100,21 @@
 }
 
 -(void)moveBallByTimeDelta:(NSTimeInterval)timeDelta {
+    CGFloat ballSpeed = 150; // points per second
+    SKNode *ball = [self childNodeWithName:@"ball"];
+    
+    CGFloat velocityY = self.ballVelocity.y;
+    CGFloat velocityX = self.ballVelocity.x;
+    if (ball.position.y < 0 || ball.position.y > self.size.height) {
+        velocityY = velocityY * -1;
+    }
+    if (ball.position.x < 0 || ball.position.x > self.size.width) {
+        velocityX = velocityX * -1;
+    }
+    self.ballVelocity = CGPointMake(velocityX, velocityY);
+    
+    ball.position = CGPointMake(ball.position.x + velocityX * timeDelta * ballSpeed,
+                                ball.position.y + velocityY * timeDelta * ballSpeed);
 }
 
 @end

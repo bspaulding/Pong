@@ -11,8 +11,8 @@
 
 @implementation MTOViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
 
     // Configure the view.
     SKView * skView = (SKView *)self.view;
