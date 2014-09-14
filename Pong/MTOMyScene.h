@@ -13,6 +13,7 @@
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) CGPoint ballVelocity;
 
--(void)movePaddleTowardPoint:(CGPoint)location byTimeDelta:(NSTimeInterval)timeDelta;
+-(void)movePaddle:(SKNode *)paddle TowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta;
 -(void)moveBallByTimeDelta:(NSTimeInterval)timeDelta;
+-(void)moveAIPaddle;
 @end

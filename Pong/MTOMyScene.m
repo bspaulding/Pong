@@ -64,8 +64,11 @@
     
     NSTimeInterval timeDelta = currentTime - self.lastUpdateTime;
     
+    [self moveAIPaddle:timeDelta];
+    
     if (self.lastTouch) {
-        [self movePaddleTowardPoint:[self.lastTouch locationInNode:self] byTimeDelta:timeDelta];
+        SKNode *paddle = [self childNodeWithName:@"paddle1"];
+        [self movePaddle:paddle TowardPoint:[self.lastTouch locationInNode:self] byTimeDelta:timeDelta];
     }
     
     [self moveBallByTimeDelta:timeDelta];
@@ -74,9 +77,8 @@
     self.lastUpdateTime = currentTime;
 }
 
--(void)movePaddleTowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta {
+-(void)movePaddle:(SKNode *)paddle TowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta {
     CGFloat paddleSpeed = 200; // points per second
-    SKNode *paddle = [self childNodeWithName:@"paddle1"];
     CGFloat distanceLeft = sqrt(pow(paddle.position.x - point.x, 2) +
                                 pow(paddle.position.y - point.y, 2));
     if (distanceLeft > 4) {
@@ -115,6 +117,22 @@
    
     if ([ball intersectsNode:paddle1] || [ball intersectsNode:paddle2]) {
         self.ballVelocity = CGPointMake(-1 * self.ballVelocity.x, self.ballVelocity.y);
+    }
+}
+
+-(void)moveAIPaddle:(NSTimeInterval)timeDelta {
+    SKNode *ball = [self childNodeWithName:@"ball"];
+    SKNode *paddle = [self childNodeWithName:@"paddle2"];
+    if (ball) {
+        CGFloat newY = ball.position.y;
+        CGFloat newX = self.size.width * 0.75;
+        if (self.ballVelocity.x > 0) {
+            newX = paddle.position.x;
+        }
+        
+        [self movePaddle:paddle
+             TowardPoint:CGPointMake(newX, newY)
+             byTimeDelta:timeDelta];
     }
 }
 
