@@ -16,21 +16,11 @@
                                                green:235.0/255.0
                                                 blue:235.0/255.0
                                                alpha:1.0];
-        [self addMidfield:size];
         [self addPaddle1:size];
         [self addPaddle2:size];
         [self addBall:size];
     }
     return self;
-}
-
-- (void)addMidfield:(CGSize)size {
-    SKSpriteNode *midfield = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
-    midfield.name = @"midfield";
-    midfield.size = CGSizeMake(2, size.height);
-    midfield.position = CGPointMake(size.width/2, size.height/2);
-    
-    [self addChild:midfield];
 }
 
 - (void)addPaddle1:(CGSize)size {
