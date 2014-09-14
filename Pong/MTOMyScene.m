@@ -79,6 +79,7 @@
     }
     
     [self moveBallByTimeDelta:timeDelta];
+    [self checkCollisions];
     
     self.lastUpdateTime = currentTime;
 }
@@ -114,6 +115,16 @@
         self.ballVelocity = CGPointMake(velocityX, velocityY);
         ball.position = CGPointMake(ball.position.x + velocityX * timeDelta * ballSpeed,
                                 ball.position.y + velocityY * timeDelta * ballSpeed);
+    }
+}
+
+-(void)checkCollisions {
+    SKNode *ball = [self childNodeWithName:@"ball"];
+    SKNode *paddle1 = [self childNodeWithName:@"paddle1"];
+    SKNode *paddle2 = [self childNodeWithName:@"paddle2"];
+   
+    if ([ball intersectsNode:paddle1] || [ball intersectsNode:paddle2]) {
+        self.ballVelocity = CGPointMake(-1 * self.ballVelocity.x, self.ballVelocity.y);
     }
 }
 
