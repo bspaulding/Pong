@@ -23,8 +23,8 @@
 		65CC08A219C3F8AF0026D0C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65CC087D19C3F8AF0026D0C2 /* UIKit.framework */; };
 		65CC08AA19C3F8AF0026D0C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08A819C3F8AF0026D0C2 /* InfoPlist.strings */; };
 		65CC08AC19C3F8AF0026D0C2 /* PongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65CC08AB19C3F8AF0026D0C2 /* PongTests.m */; };
-		65CC08BA19C3FBA90026D0C2 /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08B819C3FBA90026D0C2 /* ball.png */; };
-		65CC08BB19C3FBA90026D0C2 /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 65CC08B919C3FBA90026D0C2 /* paddle.png */; };
+		65FE6E2219C6309500E062DC /* ball.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6E2019C6309500E062DC /* ball.png */; };
+		65FE6E2319C6309500E062DC /* paddle.png in Resources */ = {isa = PBXBuildFile; fileRef = 65FE6E2119C6309500E062DC /* paddle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,8 @@
 		65CC08A719C3F8AF0026D0C2 /* PongTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PongTests-Info.plist"; sourceTree = "<group>"; };
 		65CC08A919C3F8AF0026D0C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		65CC08AB19C3F8AF0026D0C2 /* PongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PongTests.m; sourceTree = "<group>"; };
-		65CC08B819C3FBA90026D0C2 /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
-		65CC08B919C3FBA90026D0C2 /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
+		65FE6E2019C6309500E062DC /* ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ball.png; sourceTree = "<group>"; };
+		65FE6E2119C6309500E062DC /* paddle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = paddle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,8 +185,8 @@
 		65CC08B719C3FB920026D0C2 /* Sprites */ = {
 			isa = PBXGroup;
 			children = (
-				65CC08B819C3FBA90026D0C2 /* ball.png */,
-				65CC08B919C3FBA90026D0C2 /* paddle.png */,
+				65FE6E2019C6309500E062DC /* ball.png */,
+				65FE6E2119C6309500E062DC /* paddle.png */,
 			);
 			name = Sprites;
 			sourceTree = "<group>";
@@ -269,9 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65CC088619C3F8AF0026D0C2 /* InfoPlist.strings in Resources */,
-				65CC08BB19C3FBA90026D0C2 /* paddle.png in Resources */,
+				65FE6E2319C6309500E062DC /* paddle.png in Resources */,
 				65CC089919C3F8AF0026D0C2 /* Images.xcassets in Resources */,
-				65CC08BA19C3FBA90026D0C2 /* ball.png in Resources */,
+				65FE6E2219C6309500E062DC /* ball.png in Resources */,
 				65CC088F19C3F8AF0026D0C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +501,7 @@
 				65CC08B119C3F8AF0026D0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65CC08B219C3F8AF0026D0C2 /* Build configuration list for PBXNativeTarget "PongTests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +510,7 @@
 				65CC08B419C3F8AF0026D0C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

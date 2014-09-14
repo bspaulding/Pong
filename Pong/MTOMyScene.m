@@ -12,9 +12,9 @@
 
 -(id)initWithSize:(CGSize)size {    
     if (self = [super initWithSize:size]) {
-        self.backgroundColor = [SKColor colorWithRed:71.0/255.0
-                                               green:104.0/255.0
-                                                blue:33.0/255.0
+        self.backgroundColor = [SKColor colorWithRed:235.0/255.0
+                                               green:235.0/255.0
+                                                blue:235.0/255.0
                                                alpha:1.0];
         [self addMidfield:size];
         [self addPaddle1:size];
