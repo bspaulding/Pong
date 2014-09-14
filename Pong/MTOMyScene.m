@@ -29,7 +29,6 @@
     midfield.name = @"midfield";
     midfield.size = CGSizeMake(2, size.height);
     midfield.position = CGPointMake(size.width/2, size.height/2);
-    midfield.alpha = 0.75;
     
     [self addChild:midfield];
 }
