@@ -125,10 +125,7 @@
     SKNode *paddle = [self childNodeWithName:@"paddle2"];
     if (ball) {
         CGFloat newY = ball.position.y;
-        CGFloat newX = self.size.width * 0.75;
-        if (self.ballVelocity.x > 0) {
-            newX = paddle.position.x;
-        }
+        CGFloat newX = self.size.width * 0.9;
         
         [self movePaddle:paddle
              TowardPoint:CGPointMake(newX, newY)
