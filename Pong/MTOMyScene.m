@@ -117,6 +117,7 @@
    
     if ([ball intersectsNode:paddle1] || [ball intersectsNode:paddle2]) {
         self.ballVelocity = CGPointMake(-1 * self.ballVelocity.x, self.ballVelocity.y);
+        ball.position = CGPointMake(ball.position.x + 4 * self.ballVelocity.x, ball.position.y);
     }
 }
 
