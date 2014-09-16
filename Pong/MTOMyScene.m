@@ -7,6 +7,7 @@
 //
 
 #import "MTOMyScene.h"
+#import "MTOHUDNode.h"
 
 @implementation MTOMyScene
 
@@ -19,6 +20,7 @@
         [self addPaddle1:size];
         [self addPaddle2:size];
         [self addBall:size];
+        [self addHUD:size];
     }
     return self;
 }
@@ -47,6 +49,13 @@
     
     [self addChild:ball];
     self.ballVelocity = CGPointMake(-1, 1);
+}
+
+-(void)addHUD:(CGSize)size {
+    MTOHUDNode *hud = [MTOHUDNode node];
+    hud.name = @"hud";
+    hud.position = CGPointMake(size.width / 2, size.height - 24);
+    [self addChild:hud];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -96,6 +105,13 @@
     SKNode *ball = [self childNodeWithName:@"ball"];
     
     if (ball.position.x < 0 || ball.position.x > self.size.width) {
+        MTOHUDNode *hud = (MTOHUDNode *)[self childNodeWithName:@"hud"];
+        if (ball.position.x < 0) {
+            [hud incrementPlayerTwoScore];
+        } else {
+            [hud incrementPlayerOneScore];
+        }
+        
         self.ballVelocity = CGPointMake(0, 0);
         [ball removeFromParent];
     } else {
