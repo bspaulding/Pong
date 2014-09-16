@@ -26,7 +26,7 @@
 - (void)addPaddle1:(CGSize)size {
     SKSpriteNode *paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
     paddle.name = @"paddle1";
-    paddle.size = CGSizeMake(6, size.width/6.0);
+    paddle.size = CGSizeMake(6, size.width/8.0);
     paddle.position = CGPointMake(10, size.height/2.0);
     [self addChild:paddle];
 }
@@ -34,7 +34,7 @@
 - (void)addPaddle2:(CGSize)size {
     SKSpriteNode *paddle = [SKSpriteNode spriteNodeWithImageNamed:@"paddle"];
     paddle.name = @"paddle2";
-    paddle.size = CGSizeMake(6, size.width/6.0);
+    paddle.size = CGSizeMake(6, size.width/8.0);
     paddle.position = CGPointMake(size.width - 10, size.height/2.0);
     [self addChild:paddle];
 }
