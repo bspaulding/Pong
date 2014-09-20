@@ -100,13 +100,13 @@
 }
 
 -(void)movePaddle:(SKNode *)paddle TowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta {
-    CGFloat paddleSpeed = 200; // points per second
-    CGFloat distanceLeft = sqrt(pow(paddle.position.x - point.x, 2) +
+    CGFloat paddleSpeed = 250; // points per second
+    CGFloat distanceLeft = sqrt(pow(0, 2) +
                                 pow(paddle.position.y - point.y, 2));
     if (distanceLeft > 4) {
         CGFloat distanceToTravel = timeDelta * paddleSpeed;
         CGFloat angle = atan2(point.y - paddle.position.y,
-                              point.x - paddle.position.x);
+                              0);
         CGFloat yOffset = distanceToTravel * sin(angle);
         paddle.position = CGPointMake(paddle.position.x,
                                     paddle.position.y + yOffset);
@@ -114,7 +114,7 @@
 }
 
 -(void)moveBallByTimeDelta:(NSTimeInterval)timeDelta {
-    CGFloat ballSpeed = 150; // points per second
+    CGFloat ballSpeed = 300; // points per second
     SKNode *ball = [self childNodeWithName:@"ball"];
     
     if (ball.position.x < 0 || ball.position.x > self.size.width) {
