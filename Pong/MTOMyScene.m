@@ -131,10 +131,15 @@
         CGFloat velocityX = self.ballVelocity.x;
         if (ball.position.y < 0 || ball.position.y > self.size.height) {
             velocityY = velocityY * -1;
+            if (ball.position.y < 0) {
+                ball.position = CGPointMake(ball.position.x, 0 + ball.frame.size.height / 2);
+            } else {
+                ball.position = CGPointMake(ball.position.x, self.size.height - ball.frame.size.height / 2);
+            }
         }
         self.ballVelocity = CGPointMake(velocityX, velocityY);
         ball.position = CGPointMake(ball.position.x + velocityX * timeDelta * ballSpeed,
-                                ball.position.y + velocityY * timeDelta * ballSpeed);
+                                    ball.position.y + velocityY * timeDelta * ballSpeed);
     }
 }
 
@@ -145,7 +150,8 @@
    
     if ([ball intersectsNode:paddle1] || [ball intersectsNode:paddle2]) {
         self.ballVelocity = CGPointMake(-1 * self.ballVelocity.x, self.ballVelocity.y);
-        ball.position = CGPointMake(ball.position.x + 4 * self.ballVelocity.x, ball.position.y);
+        ball.position = CGPointMake(ball.position.x + 4 * self.ballVelocity.x,
+                                    ball.position.y + 4 * self.ballVelocity.y);
     }
 }
 
