@@ -10,8 +10,10 @@
 
 @interface MTOMyScene : SKScene
 @property (nonatomic, strong) UITouch *lastTouch;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGesture;
 @property (nonatomic) NSTimeInterval lastUpdateTime;
 @property (nonatomic) CGPoint ballVelocity;
+@property (nonatomic) BOOL playing;
 
 -(void)movePaddle:(SKNode *)paddle TowardPoint:(CGPoint)point byTimeDelta:(NSTimeInterval)timeDelta;
 -(void)moveBallByTimeDelta:(NSTimeInterval)timeDelta;

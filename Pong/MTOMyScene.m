@@ -21,6 +21,9 @@
         [self addPaddle2:size];
         [self addBall:size];
         [self addHUD:size];
+        [self addTapToPlay:size];
+        
+        self.playing = NO;
     }
     return self;
 }
@@ -67,6 +70,16 @@
 }
 
 -(void)update:(CFTimeInterval)currentTime {
+    if (!self.playing) {
+        if (!self.tapGesture) {
+            self.tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped)];
+            [self.view addGestureRecognizer:self.tapGesture];
+        }
+        
+        self.lastUpdateTime = currentTime;
+        return;
+    }
+    
     if (self.lastUpdateTime == 0) {
         self.lastUpdateTime = currentTime;
     }
@@ -112,8 +125,7 @@
             [hud incrementPlayerOneScore];
         }
         
-        self.ballVelocity = CGPointMake(0, 0);
-        [ball removeFromParent];
+        [self reset];
     } else {
         CGFloat velocityY = self.ballVelocity.y;
         CGFloat velocityX = self.ballVelocity.x;
@@ -148,6 +160,53 @@
              TowardPoint:CGPointMake(newX, newY)
              byTimeDelta:timeDelta];
     }
+}
+
+-(void)showTapToPlay {
+    [self addTapToPlay:self.view.frame.size];
+}
+-(void)hideTapToPlay {
+    [[self childNodeWithName:@"tapToPlay"] removeFromParent];
+}
+-(void)addTapToPlay:(CGSize)size {
+    SKLabelNode *tapToPlay = [SKLabelNode labelNodeWithFontNamed:@"Helvetica Neue"];
+    tapToPlay.name = @"tapToPlay";
+    tapToPlay.text = @"tap to play";
+    tapToPlay.fontSize = 24;
+    tapToPlay.fontColor = [SKColor colorWithRed:87.0/255.0 green:87.0/255.0 blue:87.0/255.0 alpha:1.0];
+    tapToPlay.position = CGPointMake(size.width / 2, size.height * 0.6);
+    
+    SKAction *fadeOut = [SKAction fadeAlphaTo:0 duration:0.7];
+    SKAction *fadeIn = [SKAction fadeAlphaTo:1 duration:0.7];
+    SKAction *blink = [SKAction sequence:@[fadeOut, fadeIn]];
+    SKAction *blinkForever = [SKAction repeatActionForever:blink];
+    [tapToPlay runAction:blinkForever];
+    
+    [self addChild:tapToPlay];
+}
+
+-(void)tapped {
+    [self hideTapToPlay];
+    [self.view removeGestureRecognizer:self.tapGesture];
+    self.tapGesture = nil;
+    self.playing = YES;
+}
+
+-(void)resetPaddlePositions {
+    CGSize size = self.view.frame.size;
+    SKNode *paddle = [self childNodeWithName:@"paddle1"];
+    paddle.position = CGPointMake(10, size.height/2.0);
+    paddle = [self childNodeWithName:@"paddle2"];
+    paddle.position = CGPointMake(size.width - 10, size.height/2.0);
+}
+
+-(void)reset {
+    self.playing = NO;
+    CGSize size = self.view.frame.size;
+    SKNode *ball = [self childNodeWithName:@"ball"];
+    ball.position = CGPointMake(size.width / 2, size.height / 2);
+    [self addTapToPlay:self.view.frame.size];
+    [self resetPaddlePositions];
 }
 
 @end
